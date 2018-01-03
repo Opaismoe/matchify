@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_one :profile
-  has_many :matches
+  has_many :matches, dependent: :destroy
 
   def full_name
     return profile.full_name if profile?
