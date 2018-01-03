@@ -1,15 +1,27 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-2">
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-8">
       <div class="jumbotron">
+        <% if !user_signed_in? %>
         <h1><span class="label label-success matchify-logo">Matchify</span></h1>
         <hr>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea eum corrupti, quae numquam reiciendis iure corporis odit illum libero, error laudantium officia reprehenderit sint, quidem suscipit beatae distinctio ipsum consectetur.</p>
+        <% elsif current_user.admin? %>
+          <h1><span class="label label-success">All matches made today</span></h1>
+          <% @matches.each do | match | %>
+            <hr>
+            <ul>User id: <span class="label label-success"><%= match.user.id %></span></ul>
+            <ul>Group id: <span class="label label-success"><%= match.group_id %></ul>
+            <ul>Date: <%= match.created_at.strftime("%A, %d %b %Y %H:%M ") %></ul>
+          <% end %>
+        <% else %>
+          <h1><span class="label label-success">Your Match for today</span></h1>
+        <% end %>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-2">
     </div>
   </div>
 </div>
