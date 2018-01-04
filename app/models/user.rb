@@ -6,14 +6,11 @@ class User < ApplicationRecord
   has_one :profile
   has_many :matches, dependent: :destroy
 
-
-
   validates :email, presence: true
   validates_uniqueness_of :admin
 
   def full_name
     return profile.full_name if profile?
-
     email
   end
 
