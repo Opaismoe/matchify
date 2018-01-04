@@ -4,9 +4,34 @@ class Match < ApplicationRecord
   validates :group_id, :user_id, presence: true
 
 
-  def self.previous_matches(date)
-    where(date < DateTime.now.beginning_of_day)
-  end
+  #def self.previous_matches(date)
+  #  where(date < DateTime.now.beginning_of_day)
+  #end
+
+  #def self.set_date
+  #  DateTime.now.to_date
+  #end
+
+#def self.match_for_today?
+#  if Match.last == nil
+#    return false
+#  else
+#    date = Match.last.date
+#    return date == set_date
+#  end
+#end
+
+#def self.create_matches
+#  matches = Profile.pairing
+#  matches.each do |match|
+#    group_id = match.fetch(0)
+#    user_id = match.fetch(1)
+#    date = set_date
+#    Match.create(group_id: group_id, user_id: user_id, date: date )
+#  end
+#end
+#end
+
 
   def self.all_students
     @student = User.where(admin:false)
@@ -16,6 +41,9 @@ class Match < ApplicationRecord
     end
       @all_students
   end
+
+
+
 
 
 end
