@@ -12,7 +12,7 @@
           <h1><span class="label label-success">All matches made today</span></h1>
           <% @matches.each do | match | %>
             <hr>
-            <ul>User id: <span class="label label-success"><%= match.user.full_name%></span></ul>
+            <ul>User: <span class="label label-success"><%= match.user.full_name%></span></ul>
             <ul>Group id: <span class="label label-success"><%= match.group_id %></ul>
             <ul>Date: <%= match.created_at.strftime("%A, %d %b %Y %H:%M ") %></ul>
           <% end %>
@@ -20,7 +20,7 @@
           <h1><span class="label label-danger">Your Match for today</span></h1>
             <% @matches.each do | match | %>
               <hr>
-              <ul>User id: <span class="label label-success"><%= match.user.id %></span></ul>
+              <ul>User: <span class="label label-success"><%= match.user.full_name %></span></ul>
               <ul>Group id: <span class="label label-success"><%= match.group_id %></ul>
               <ul>Date: <%= match.created_at.strftime("%A, %d %b %Y %H:%M ") %></ul>
           <% end %>
