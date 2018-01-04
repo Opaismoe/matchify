@@ -2,23 +2,22 @@
 <h1>Admin control panel</h1>
 <h4><label class="label label-danger">42 is the answer</label></h4>
 <hr>
-<table class="table">
+<table class="table table-bordered">
   <thead>
-    <tr>
+    <tr class="table success">
       <th>Admin</th>
       <th>Student</th>
     </tr>
   </thead>
-  <tbody>
-
+  <tbody class="table table-hover">
     <% @users.each do |user| %>
-    <tr>
-      <td class="label-success">
+    <tr class="table warning">
+      <td>
         <% if user.admin? %>
         <%= user.full_name %> | <%= link_to "Demote", {action: "promote", id: user.id }, method: :put %>
         <% end %>
       </td>
-      <td class="label-danger">
+      <td class="">
         <% if user.admin == false %>
         <%= user.full_name %> | <%= link_to "Promote", {action: "promote", id: user.id }, method: :put %>
         <% end %>

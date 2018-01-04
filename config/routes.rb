@@ -18,6 +18,4 @@ Rails.application.routes.draw do
   resources :users
   # match '/users', to: 'users#promote', via: :put
   put 'admin/:id' => 'users#promote', :as => "promote"
-
-
 end
