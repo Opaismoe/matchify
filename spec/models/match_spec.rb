@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Match, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  pending "Checks if match is equel to users"
+  pending "Validate if match has a group id"
 end
