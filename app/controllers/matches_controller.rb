@@ -6,7 +6,7 @@ class MatchesController < ApplicationController
 
 def create
   Match.create_matches(params[:date])
-  flash[:notice] = "Matches are Generated!"
+  flash[:notice] = "The matches are created!"
   redirect_to matches_path
 end
 

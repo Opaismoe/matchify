@@ -43,24 +43,7 @@ class Match < ApplicationRecord
   end
 
 
-  def self.shuffle_student_ids
-    all_students
-    @shuffled_students_ids = @all_students.shuffle()
-    return @shuffled_students_ids
-  end
 
-
-
-  def self.create_matches(day)
-    shuffle_student_ids
-    id = []
-    while @shuffled_students_ids.length > 1 do
-      2.times{ id << @shuffled_students_ids.slice!(0) }
-      Match.create(group_id: id[0], user_id: id[1], date: day)
-      2.times{ id.delete_at(0) }
-    end
-
-  end
 
 
 end
