@@ -48,8 +48,11 @@ class Match < ApplicationRecord
      @shuffled_students_ids = @all_students.shuffle()
      return @shuffled_students_ids
    end
-
-
+  
+    all_students
+    @shuffled_students_ids = @all_students.shuffle()
+    return @shuffled_students_ids #used for create matches.
+  end
 
 
 
