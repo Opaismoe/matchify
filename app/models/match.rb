@@ -6,7 +6,7 @@ class Match < ApplicationRecord
 
   def self.previous_matches(date)
     where(date < DateTime.now.beginning_of_day)
-end
+  end
 
-  
+
 end
