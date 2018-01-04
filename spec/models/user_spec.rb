@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "association with profile" do
-    let(:user) { create :user }
+    let!(:user) { create :user }
     let!(:profile) { create :profile, user: user}
 
     it "has a profile" do
