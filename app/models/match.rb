@@ -44,6 +44,11 @@ class Match < ApplicationRecord
 
 
   def self.shuffle_student_ids
+     all_students
+     @shuffled_students_ids = @all_students.shuffle()
+     return @shuffled_students_ids
+   end
+  
     all_students
     @shuffled_students_ids = @all_students.shuffle()
     return @shuffled_students_ids #used for create matches.
