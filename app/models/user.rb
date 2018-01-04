@@ -6,9 +6,9 @@ class User < ApplicationRecord
   has_one :profile
   has_many :matches, dependent: :destroy
 
+
   def full_name
     return profile.full_name if profile?
-
     email
   end
 
