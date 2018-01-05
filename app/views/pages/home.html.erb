@@ -12,20 +12,62 @@
           <h1><span class="label label-success">All matches made today</span></h1>
           <% @matches.each do | match | %>
             <hr>
-            <ul>User: <span class="label label-success"><%= match.user.full_name%></span></ul>
-            <ul>Group id: <span class="label label-success"><%= match.group_id %></ul>
+            <% @user_id = match.user_id %>
+            <% @group_id = match.group_id %>
+            <% @user = User.find_by id: @user_id %>
+              <% @match = User.find_by id: @group_id %>
+            <ul>User: <span class="label label-success"><%= @user.email%></span></ul>
+            <ul>oUser: <span class="label label-success"><%= @user.email%></span></ul>
             <ul>Date: <%= match.created_at.strftime("%A, %d %b %Y %H:%M ") %></ul>
             <table class="table">
 
           <% end %>
           <% else %>
-          <h1><span class="label label-danger">Your Match for today</span></h1>
-            <% @matches.each do | match | %>
-              <hr>
-              <ul>User: <span class="label label-success"><%= match.user.full_name %></span></ul>
-              <ul>Group id: <span class="label label-success"><%= match.group_id %></ul>
-              <ul>Date: <%= match.created_at.strftime("%A, %d %b %Y %H:%M ") %></ul>
-          <% end %>
+          <h1><span class="label label-danger">Your Match for today</span></h1> <br /><br />
+            <%# @matches.each do | match | %>
+
+            <% @matches_of_the_day = [] %>
+            <% @matches.each do |match| %>
+
+            <% @matches_of_the_day << match %>
+            <% end %>
+
+            <% @matches_of_the_day.each do |match| %>
+
+            <% @user_id = match.user_id %>
+            <% @group_id = match.group_id %>
+
+            <% @user = User.find_by id: @user_id %>
+            <% @match = User.find_by id: @group_id %>
+
+            <li class="list-group-item list-group-item-warning">
+              <b><%= match.date %>:
+              </b>
+              <% if @user.profile != nil %>
+              <%= @user.profile.full_name %>
+
+            <% else %>
+              <%= @user.email %>
+              <% end %>
+              <% if @match.profile != nil %>
+              <%= @match.profile.full_name %>
+            <% else %>
+              <%= @match.email %>
+              <% end %>
+
+            </li>
+            <% end %>
+
+
+
+
+
+            <br />
+
+              <!--<ul>User: <span class="label label-success"><%#= match.user.full_name %></span></ul>
+              <ul>Group id: <span class="label label-success"><%#= match.group_id %></ul>
+              <ul>Date: <%#= match.created_at.strftime("%A, %d %b %Y %H:%M ") %></ul> -->
+          <%# end %>
         <% end %>
       </div>
     </div>
