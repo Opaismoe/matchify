@@ -1,1 +1,25 @@
 <h1>Show created matches.</h1>
+
+
+<div class="row">
+    <% (Date.today.beginning_of_week()..Date.today.end_of_week()).each do |day| %>
+    <div class="row">
+      <div class="text-center">
+        <% if day == Date.today %>
+        <h3>
+          <span class="label label-info"><%= day %></span>
+        </h3>
+      <% else %>
+        <h3><%= day %></h3>
+        <% end %>
+      </div>
+
+      <hr>
+ <ul class="list-group">
+   <% @matches_of_the_day = [] %>
+   <% @matches.each do |match| %>
+   <% if match.date == day %>
+   <% @matches_of_the_day << match %>
+   <% end %>
+   <% end %>
+   <% end %>

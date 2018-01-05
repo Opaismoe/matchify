@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   def home
     @user = current_user
     @matches = Match.all
-    
+
     if @user.admin == false
       @matches = @user.matches
     end
@@ -14,4 +14,5 @@ class PagesController < ApplicationController
 
   def show
   end
+
 end
